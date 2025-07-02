@@ -8,13 +8,13 @@ Auto embedding is a feature that allows you to automatically generate vector emb
 
 ## Basic Usage
 
-### Step 1. Define a embedding function
+### Step 1. Define an embedding function
 
 === "Python"
 
-    Define a embedding function to generate vector embeddings for text data.
+    Define an embedding function to generate vector embeddings for text data.
     
-    In this example, we use OpenAI as the embedding provider for demonstration, for other providers, please check the [Supported Providers](#supported-providers) list.
+    In this example, we use OpenAI as the embedding provider for demonstration. For other providers, please check the [Supported Providers](#supported-providers) list.
 
     ```python
     from pytidb.embeddings import EmbeddingFunction
@@ -35,14 +35,16 @@ Auto embedding is a feature that allows you to automatically generate vector emb
 
     ```python hl_lines="7"
     from pytidb.schema import TableModel, Field
-    from pytidb.datatype import Text
+    from pytidb.datatype import TEXT
 
-    class Chunk(TableModel, table=True):
+    class Chunk(TableModel):
+        __tablename__ = "chunks"
+        
         id: int = Field(primary_key=True)
-        text: str = Field(sa_type=Text)
+        text: str = Field(sa_type=TEXT)
         text_vec: list[float] = embed_func.VectorField(source_field="text")
 
-    table = db.create_table(schema=Chunk)
+    table = client.create_table(schema=Chunk)
     ```
 
     You don't need to specify the `dimensions` parameter, it will be automatically determined by the embedding model.

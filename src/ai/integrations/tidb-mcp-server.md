@@ -9,7 +9,7 @@ The TiDB MCP Server is an open-source tool that enables you to interact with TiD
 
 ## Understanding MCP and TiDB MCP Server
 
-The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) is a protocol standardizes communication between LLMs and external tools.
+The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) is a protocol that standardizes communication between LLMs and external tools.
 
 MCP adopts a client-server architecture, allowing a host application to connect to multiple external servers:
 
@@ -19,15 +19,15 @@ MCP adopts a client-server architecture, allowing a host application to connect 
 
 - **Servers**: External services, such as the **TiDB MCP Server**, which provide tools, context, and prompts to clients for interacting with external systems.
 
-The **TiDB MCP Server** is an MCP-compatible server that provides tools, context to MCP clients for interacting with TiDB databases.
+The **TiDB MCP Server** is an MCP-compatible server that provides tools and context to MCP clients for interacting with TiDB databases.
 
 ## Prerequisites
 
 Before you begin, ensure you have the following:
 
 - **An MCP-compatible client**: For example, [Cursor](./tidb-mcp-cursor.md) or [Claude Desktop](./tidb-mcp-claude-desktop.md).
-- **Python (>=3.10) and uv**: Ensure Python (version 3.10 or later) and uv is installed. Follow the [installation guide](https://docs.astral.sh/uv/getting-started/installation/) to install uv.
-- **A TiDB Serverless Cluster**: You can create a free TiDB Cloud Serverless cluster here [tidbcloud.com](https://tidbcloud.com/free-trial).
+- **Python (>=3.10) and uv**: Ensure Python (version 3.10 or later) and uv are installed. Follow the [installation guide](https://docs.astral.sh/uv/getting-started/installation/) to install uv.
+- **A TiDB Serverless Cluster**: You can create a free TiDB Cloud Serverless cluster at [tidbcloud.com](https://tidbcloud.com/free-trial).
 
 ## Supported MCP Clients
 
@@ -45,7 +45,7 @@ The TiDB MCP Server supports two modes to integrate with MCP clients:
 - Standard Input/Output (STDIO) mode (default)
 - Server-Sent Events (SSE) mode
   
-TiDB MCP Server uses STDIO mode by default, which is not required to start up a standalone server in advance.
+The TiDB MCP Server uses STDIO mode by default, which does not require starting up a standalone server in advance.
 
 You can choose one of them to set up the TiDB MCP Server in your MCP client.
 
@@ -53,13 +53,13 @@ You can choose one of them to set up the TiDB MCP Server in your MCP client.
 
 To set up the TiDB MCP Server in your MCP client using STDIO mode, follow these steps:
 
-1. Refer to your MCP client’s documentation to learn how to configure the MCP Server.
+1. Refer to your MCP client's documentation to learn how to configure the MCP Server.
 
 2. Go to your [TiDB Cloud clusters](https://tidbcloud.com/console/clusters) page and navigate to your cluster.
 
 3. Click the **Connect** button in the cluster page to get the connection parameters.
 
-4. Configure the TiDB MCP Server with your connection parameters in the `mcpServers` section of your AI application’s configuration file.
+4. Configure the TiDB MCP Server with your connection parameters in the `mcpServers` section of your AI application's configuration file.
   
       Example MCP configuration file:
 
@@ -84,7 +84,7 @@ To set up the TiDB MCP Server in your MCP client using STDIO mode, follow these 
 
 To set up the TiDB MCP Server in your MCP client using SSE mode, follow these steps:
 
-1. Refer to your MCP client’s documentation to learn how to configure the MCP Server.
+1. Refer to your MCP client's documentation to learn how to configure the MCP Server.
 
 2. Go to your [TiDB Cloud clusters](https://tidbcloud.com/console/clusters) page and navigate to your cluster.
 
@@ -110,7 +110,7 @@ To set up the TiDB MCP Server in your MCP client using SSE mode, follow these st
     uvx --from "pytidb[mcp]" tidb-mcp-server --transport sse
     ```
 
-6. Add the `TiDB` MCP server configuration to the `mcpServers` section of your AI application’s configuration file.
+6. Add the `TiDB` MCP server configuration to the `mcpServers` section of your AI application's configuration file.
 
     ```json
     {

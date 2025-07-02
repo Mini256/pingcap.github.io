@@ -4,11 +4,11 @@ title: Quickstart
 
 # Quickstart
 
-In this guide, you will learn how to get started with [vector search](./concepts/vector-search.md) in TiDB using Python SDK. Follow along to build your first AI application working with TiDB.
+In this guide, you will learn how to get started with [vector search](./concepts/vector-search.md) in TiDB using the Python SDK. Follow along to build your first AI application working with TiDB.
 
 ## Prerequisites
 
-- Go [tidbcloud.com](https://tidbcloud.com/) to create a TiDB Cloud Serverless cluster for free or using [tiup playground](https://docs.pingcap.com/tidb/stable/quick-start-with-tidb/#deploy-a-local-test-cluster) to a TiDB Self-Managed cluster for local testing.
+- Go to [tidbcloud.com](https://tidbcloud.com/) to create a TiDB Cloud Serverless cluster for free, or use [tiup playground](https://docs.pingcap.com/tidb/stable/quick-start-with-tidb/#deploy-a-local-test-cluster) to deploy a TiDB Self-Managed cluster for local testing.
 
 ## Installation
 
@@ -20,7 +20,7 @@ To install the Python SDK, run the following command:
 pip install pytidb
 ```
 
-To use built-in embedding function, install the `models` extension (alternative):
+To use built-in embedding functions, install the `models` extension (alternative):
 
 ```bash
 pip install "pytidb[models]"
@@ -51,7 +51,7 @@ pip install "pytidb[models]"
     ```python
     from pytidb import TiDBClient
 
-    db = TiDBClient.connect(
+    client = TiDBClient.connect(
         host="gateway01.us-east-1.prod.shared.aws.tidbcloud.com",
         port=4000,
         username="4EfqPF23YKBxaQb.root",
@@ -69,7 +69,7 @@ pip install "pytidb[models]"
     ```python
     from pytidb import TiDBClient
 
-    db = TiDBClient.connect(
+    client = TiDBClient.connect(
         host="localhost",
         port=4000,
         username="root",
@@ -80,7 +80,7 @@ pip install "pytidb[models]"
 
     > **Tip:** Please modify the connection parameters according to your actual deployment.
 
-Once connected, you can use the `db` object to operate tables, query data, and more. 
+Once connected, you can use the `client` object to operate tables, query data, and more. 
 
 ## Create an embedding function
 
@@ -88,7 +88,7 @@ When working with [embedding models](./concepts/vector-search.md#embedding-model
 
 === "OpenAI"
 
-    Go [OpenAI platform](https://platform.openai.com/api-keys) to create your API key for embedding.
+    Go to the [OpenAI platform](https://platform.openai.com/api-keys) to create your API key for embedding.
 
     ```python
     from pytidb.embeddings import EmbeddingFunction
@@ -101,7 +101,7 @@ When working with [embedding models](./concepts/vector-search.md#embedding-model
 
 === "Jina AI"
 
-    Go [Jina AI](https://jina.ai/embeddings/) to create your API key for embedding.
+    Go to [Jina AI](https://jina.ai/embeddings/) to create your API key for embedding.
 
     ```python
     from pytidb.embeddings import EmbeddingFunction
@@ -124,20 +124,22 @@ As an example, create a table named `chunks` with the following columns:
 === "Python"
 
     ```python hl_lines="6"
-    from pytidb.schema import TableModel, Field, VectorField
+    from pytidb.schema import TableModel, Field
 
-    class Chunk(TableModel, table=True):
+    class Chunk(TableModel):
+        __tablename__ = "chunks"
+        
         id: int = Field(primary_key=True)
         text: str = Field()
         text_vec: list[float] = text_embed.VectorField(source_field="text")
         user_id: int = Field()
 
-    table = db.create_table(schema=Chunk)
+    table = client.create_table(schema=Chunk)
     ```
 
 Once created, you can use the `table` object to insert data, search data, and more.
 
-## Insert Data
+## Insert data
 
 Now let's add some sample data to our table. 
 
@@ -153,7 +155,7 @@ table.bulk_insert([
 
 ## Search for nearest neighbors
 
-To search for nearest neighbors of a given query, you can use the `table.search()` method, it will perform a [vector search](./guides/vector-search.md) by default.
+To search for nearest neighbors of a given query, you can use the `table.search()` method, which will perform a [vector search](./guides/vector-search.md) by default.
 
 ```python
 table.search(
@@ -165,7 +167,7 @@ table.search(
 
 In this example, vector search compares the query vector with the stored vectors in the `text_vec` field of the `chunks` table and returns the top 3 most semantically relevant results based on similarity scores.
 
-The closer `_distance` means the more similar the two vectors are.
+The closer the `_distance` value, the more similar the two vectors are.
 
 ```json title="Expected output"
 [
@@ -208,10 +210,10 @@ table.delete({
 
 ## Drop table
 
-When you no longer need a table, you can drop it using the `db.drop_table()` method:
+When you no longer need a table, you can drop it using the `client.drop_table()` method:
 
 ```python
-db.drop_table("chunks")
+client.drop_table("chunks")
 ```
 
 ## Next steps

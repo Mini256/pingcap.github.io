@@ -14,7 +14,7 @@ A table can contain multiple columns with different data types to store various 
 
 TiDB provides a `TableModel` class that represents the schema of a table. This class is compatible with the [Pydantic Model](https://docs.pydantic.dev/latest/concepts/models/) and allows you to define the table structure in a declarative way.
 
-In the following example, you create a table named `items` with these columns:
+In the following example, you create a table named `items` with the following columns:
 
 - `id`: a primary key column with an integer type
 - `content`: a text type column
@@ -23,7 +23,7 @@ In the following example, you create a table named `items` with these columns:
 
 === "Python"
 
-    After you [connect to the database](./connect.md) using PyTiDB and obtain a `client` instance, you can create a table with the `create_table` method.
+    After you [connect to the database](./connect.md) using pytidb and obtain a `client` instance, you can create a table with the `create_table` method.
 
     ```python hl_lines="12"
     from pytidb.schema import TableModel, Field, VectorField
@@ -274,16 +274,16 @@ For a complete list of supported filter operations and examples, refer to the [f
 
 === "Python"
 
-    To permanently remove a table from the database, use the `db.drop_table()` method.
+    To permanently remove a table from the database, use the `client.drop_table()` method.
 
     ```python
-    db.drop_table("items")
+    client.drop_table("items")
     ```
 
     To check that the table is removed from the database:
 
     ```python
-    db.table_names()
+    client.table_names()
     ```
 
 === "SQL"

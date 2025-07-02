@@ -19,7 +19,7 @@ TiDB provides full-text search capabilities for **massive datasets** with high p
 
 ## Basic Usage
 
-### Step 1. Create Table and Full-text Index
+### Step 1. Create a table and full-text index
 
 === "Python"
 
@@ -72,7 +72,7 @@ TiDB provides full-text search capabilities for **massive datasets** with high p
     - `STANDARD`: Fast, works for English content, splits words by spaces and punctuation.
     - `MULTILINGUAL`: Supports multiple languages, including English, Chinese, Japanese, and Korean.
 
-### Step 2. Insert Sample Data
+### Step 2. Insert sample data
 
 For demonstration purposes, the following sample data covers English, Japanese, and Chinese text.
 
@@ -91,7 +91,7 @@ For demonstration purposes, the following sample data covers English, Japanese, 
         Item(id=7, title="Bluetooth5.3ヘッドホン ノイズキャンセリング 没入サウンド 快適装着"),
         Item(id=8, title="IPX7防水イヤホン スポーツ対応 タッチ操作 高音質音楽"),
         Item(id=9, title="スポーツイヤホン 安定装着 防汗 長持ちバッテリー ワークアウト対応"),
-        Item(id=10, title="有線ヘッドホン スタジオ級 HDサウンド 快適装着 プロ音楽体験"),
+        Item(id=10, title="有线ヘッドホン スタジオ级 HDサウンド 快适装着 プロ音楽体験"),
         Item(id=11, title="无线蓝牙耳机 HiFi音质 48小时超长续航 快速充电 低延迟"),
         Item(id=12, title="蓝牙5.3降噪头戴式耳机 杜比全景声 沉浸音效 舒适佩戴 畅享静谧音乐时光"),
         Item(id=13, title="IPX7防水真无线耳机 运动无忧 智能触控 随时畅听高品质音乐"),
@@ -123,7 +123,7 @@ For demonstration purposes, the following sample data covers English, Japanese, 
         (15, '录音室级有线耳机 高清音质 舒适佩戴 可拆卸线材 多设备兼容 降噪麦克风');
     ```
 
-### Step 3. Perform a Full-text Search
+### Step 3. Perform a full-text search
 
 === "Python"
 

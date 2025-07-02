@@ -16,8 +16,8 @@ For one-click installation, you can click the following button:
 Before you begin, ensure you have the following:
 
 - **Cursor Editor**: Download and install Cursor from [cursor.com](https://cursor.com).
-- **Python (>=3.10) and uv**: Ensure Python (version 3.10 or later) and uv is installed. Follow the [installation guide](https://docs.astral.sh/uv/getting-started/installation/) to install uv.
-- **A TiDB Serverless Cluster**: You can create a free TiDB CLoud Serverless cluster here [tidbcloud.com](https://tidbcloud.com/free-trial).
+- **Python (>=3.10) and uv**: Ensure Python (version 3.10 or later) and uv are installed. Follow the [installation guide](https://docs.astral.sh/uv/getting-started/installation/) to install uv.
+- **A TiDB Serverless Cluster**: You can create a free TiDB Cloud Serverless cluster at [tidbcloud.com](https://tidbcloud.com/free-trial).
 
 ## Setup steps
 

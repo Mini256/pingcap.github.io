@@ -49,7 +49,7 @@ This section shows you how to use vector search in your application in minimal s
 
 === "SQL"
 
-    You can use the `CREATE TABLE` statement to create a table and using `VECTOR` type to define a vector column.
+    You can use the `CREATE TABLE` statement to create a table and use the `VECTOR` type to define a vector column.
 
     ```sql hl_lines="4 5"
     CREATE TABLE documents (
@@ -62,7 +62,7 @@ This section shows you how to use vector search in your application in minimal s
 
     In this example:
 
-    - The `text_vec` column is defined as a `VECTOR` type with 3 dimensions, it means that the vector to be stored in this column must have 3 dimensions.
+    - The `text_vec` column is defined as a `VECTOR` type with 3 dimensions, which means that the vector to be stored in this column must have 3 dimensions.
     - A vector index is created using the `VEC_COSINE_DISTANCE` function to optimize vector search performance
 
     TiDB supports two distance functions for vector indexes:
@@ -117,7 +117,7 @@ In this example, we assume the query is `A swimming animal` and its vector embed
 
 === "Python"
 
-    You can use the `table.search()` method to perform vector search, which uses `search_mode="vector"` by default.
+    You can use the `table.search()` method to perform vector search.
 
     ```python
     table.search([1, 2, 3]).limit(3).to_list()

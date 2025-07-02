@@ -1,6 +1,6 @@
 # Connect to database
 
-In this guide, we will introduce how to connect to a TiDB database using the TiDB client.
+In this guide, we will show you how to connect to a TiDB database using the TiDB client.
 
 ## Install the dependencies
 
@@ -29,7 +29,7 @@ Choose the steps based on your deployment type:
     ```python title="main.py"
     from pytidb import TiDBClient
 
-    db = TiDBClient.connect(
+    client = TiDBClient.connect(
         host="{gateway-region}.prod.aws.tidbcloud.com",
         port=4000,
         username="{prefix}.root",
@@ -51,7 +51,7 @@ Choose the steps based on your deployment type:
     ```python title="main.py"
     from pytidb import TiDBClient
 
-    db = TiDBClient.connect(
+    client = TiDBClient.connect(
         host="{tidb_server_host}",
         port=4000,
         username="root",
@@ -64,7 +64,7 @@ Choose the steps based on your deployment type:
     
         If you are using `tiup playground` to deploy a TiDB cluster for testing, the default host is `127.0.0.1` and the default password is empty.
 
-Once connected, you can use the `db` object to operate tables, query data, and more.
+Once connected, you can use the `client` object to operate tables, query data, and more.
 
 ## Connect with connection string
 
@@ -81,7 +81,7 @@ If you prefer to use a connection string (database URL), you can follow the form
     ```python title="main.py"
     from pytidb import TiDBClient
 
-    db = TiDBClient.connect(
+    client = TiDBClient.connect(
         database_url="mysql+pymysql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}?ssl_verify_cert=true&ssl_verify_identity=true",
     )
     ```
@@ -97,7 +97,7 @@ If you prefer to use a connection string (database URL), you can follow the form
     ```python title="main.py"
     from pytidb import TiDBClient
 
-    db = TiDBClient.connect(
+    client = TiDBClient.connect(
         database_url="mysql+pymysql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}",
     )
     ```
@@ -117,7 +117,7 @@ If your application already has an existing SQLAlchemy database engine, you can 
 ```python title="main.py"
 from pytidb import TiDBClient
 
-db = TiDBClient(db_engine=db_engine)
+client = TiDBClient(db_engine=db_engine)
 ```
 
 ## Next Steps
